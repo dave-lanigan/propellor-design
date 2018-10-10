@@ -1,0 +1,9 @@
+README.md
+setup.py
+propellor/__init__.py
+propellor/airfoils.py
+propellor/blade.py
+propellor_design.egg-info/PKG-INFO
+propellor_design.egg-info/SOURCES.txt
+propellor_design.egg-info/dependency_links.txt
+propellor_design.egg-info/top_level.txt
