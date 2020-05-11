@@ -1,1 +1,0 @@
-name="propellor_design"
