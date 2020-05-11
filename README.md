@@ -1,4 +1,4 @@
-# prop-gen
+# prop-gen-tool
 Generates a .txt file of data points for the profile of a propeller that can be imported into Solidworks or similar CAD software to generate a propeller. Its for personal use and doesn't follow any scientific airflow design method
 
 ## Usage
