@@ -32,15 +32,10 @@ def attackAngles(numProfiles,angle0,angle1):
     return thetas
 
 class Wing:
+    """
+       This class biulds a basic propellor.
 
-
-###class variables:
-#why arent these working?
-    # numProfiles=6
-    # numPoints=150
-
-###List methods
-
+    """
     def __init__(self,length,theta0,theta1):
         """
         initializes Airfoil with the necessary parameters, length, largest
@@ -48,31 +43,16 @@ class Wing:
         """
         self.length, self.theta0, self.theta1 = length, theta0, theta1
 
-    # def build_wing_generic_single(self):
-    #     numProfiles=6
-    #     numPoints=150
-    #
-    #     l=self.length
-    #     cambers=[l*0.08,l*0.08,l*0.1, l*0.14, l*0.16, l*0.14,l*0.1,l*0.06,l*0.01]
-    #     z=zSpace(numPoints,numProfiles,l)
-    #     thetas=attackAngles(numProfiles,self.theta0,self.theta1)
-    #
-    #     e1,e2=ellipse(2*numPoints-2,cambers[0],thetas[0]), ellipse(2*numPoints-2,cambers[1],thetas[1])
-    #     x,y = np.concatenate([e1[0],e2[0]]),np.concatenate([e1[1],e2[1]])
-    #
-    #     for i in range(2,numProfiles+2):
-    #         P=airfoil(numPoints,RT=15,camber=cambers[i],theta=thetas[i])
-    #         x,y=np.concatenate([x,P[0]]),np.concatenate([x,P[1]])
-    #
-    #
-    #     e3=ellipse(2*numPoints-2,cambers[8],thetas[8])
-    #     x,y=np.concatenate([x,e3[0]]),np.concatenate([x,e3[1]])
-    #     self.wing_profile=[x,y,z]
-    #     return self.wing_profile
+    def build_prop_generic(self,numProfiles=6,numPoints=150):
+        """Generates a propellor wing that can be exported as a .txt file.
 
-    def build_wing_generic_multiple(self):
-        numProfiles=6
-        numPoints=150
+        Arguments:
+            numProfiles {int}: The number of cross sections to the propellor wing.
+            numPoints {int}: Essentially the size of the file.
+        
+        Return:
+            An array reprenting the points that compose the propellor wing.
+      """
 
         l=self.length
         cambers=[l*0.08,l*0.08,l*0.1, l*0.14, l*0.16, l*0.14,l*0.1,l*0.06,l*0.01]
@@ -114,7 +94,8 @@ class Wing:
         wp=self.wing_profile
 
         fig = plt.figure()
-        ax = fig.gca(projection='3d')
+        
+        ax = fig.add_subplot(111,projection='3d')
 
         maxX,maxY,=0,0
         minX,minY,=0,0
@@ -131,15 +112,7 @@ class Wing:
                 minY=min(y)
         #
         limMax,limMin=maxX+maxX*0.1,minX-minX*0.1
-        ax.set_xlim3d(limMin,limMax), ax.set_ylim3d(limMin,limMax), ax.set_zlim3d(0,self.length)
+        #ax.set_xlim3d(limMin,limMax), ax.set_ylim3d(limMin,limMax), ax.set_zlim3d(0,self.length)
+        ax.set_xlim3d(self.length,-self.length), ax.set_ylim3d(self.length,-self.length), ax.set_zlim3d(0,self.length)
         plt.show()
 
-"""
-Examine code:
-"""
-
-w = Wing(4,15,1)
-print(w)
-w.build_wing_generic_multiple()
-w.plot_profile()
-#w.export_profile_as_txt()
