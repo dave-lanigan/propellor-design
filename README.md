@@ -8,7 +8,7 @@ from blade import Wing
 
 w = Wing(4,15,1)
 print(w)
-w.build_wing_generic()
+w.build_prop_generic()
 w.plot_profile()
 w.export_profile_as_txt()
 
