@@ -3,7 +3,7 @@ Generates a .txt file of data points for the profile of a propeller that can be 
 
 ## Usage
 
-``
+```
 from blade import Wing
 
 w = Wing(4,15,1)
@@ -12,7 +12,7 @@ w.build_wing_generic_multiple()
 w.plot_profile()
 w.export_profile_as_txt()
 
-``
+```
 
 
 
